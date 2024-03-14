@@ -58,7 +58,7 @@ export default function Page() {
 
       <Form setFile={setFile} action={identifyThings} />
 
-      <section className="placeholderdiv relative h-80 w-80">
+      <section className="relative my-4 h-80 w-80">
         {/* Preview the image */}
         {imagePreview && (
           <Image
@@ -66,7 +66,7 @@ export default function Page() {
             src={imagePreview}
             width={400}
             height={400}
-            className="absolute z-0 rounded-sm object-contain"
+            className="absolute z-0 aspect-square rounded-sm object-contain"
           />
         )}
 
@@ -77,16 +77,16 @@ export default function Page() {
             src={`data:image/png;base64,${toShow.mask}`}
             width={400}
             height={400}
-            className="absolute z-20 rounded-sm object-contain mix-blend-screen invert"
+            className="absolute z-20 aspect-square rounded-sm object-contain mix-blend-screen invert"
           />
         )}
       </section>
 
       {/* Display a list of all identified objects */}
       {apiResponse.length > 0 && (
-        <div className="mt-12 ">
+        <div className="z-10 mt-4">
           <div className="mb-4">Identified objects: </div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             {apiResponse.map((e) => (
               <div className="mx-2" key={e.label}>
                 <Button
@@ -101,7 +101,7 @@ export default function Page() {
           </div>
         </div>
       )}
-      <div className="mb-4 text-muted-foreground">
+      <div className="my-4 text-muted-foreground">
         This is a project that uses Facebooks DEtection TRansformer (DETR) model
         trained end-to-end on COCO 2017 panoptic (118k annotated images).
       </div>
